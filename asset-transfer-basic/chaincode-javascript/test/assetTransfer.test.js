@@ -18,7 +18,7 @@ const AssetTransfer = require('../lib/assetTransfer.js');
 let assert = sinon.assert;
 chai.use(sinonChai);
 
-describe('Asset Transfer Basic Tests', () => {
+describe('PROOF OF HOSPITAL-NETWORK', () => {
     let transactionContext, chaincodeStub, asset;
     beforeEach(() => {
         transactionContext = new Context();
@@ -64,17 +64,17 @@ describe('Asset Transfer Basic Tests', () => {
         });
 
         asset = {
-            ID: 'asset1',
-            Color: 'blue',
-            Size: 5,
-            Owner: 'Tomoko',
-            AppraisedValue: 300,
+            ID: 'patient',
+            FirstName: 'Lino',
+            Lastname: 'Orso',
+            Password: 'ABCD',
         };
     });
 
     describe('Test InitLedger', () => {
         it('should return error on InitLedger', async () => {
             chaincodeStub.putState.rejects('failed inserting key');
+            
             let assetTransfer = new AssetTransfer();
             try {
                 await assetTransfer.InitLedger(transactionContext);
